@@ -20,8 +20,8 @@ let answersLetters = [];
 //numOfWordale is calculated later by the difference from today to the launch of wordale
 let numOfWordale = 0;
 // the launch date of wordale
-const startDate = new Date(2022, 0, 11);
-const summerClockStartDate = new Date(2022,2,26)
+const startDate = new Date(2023, 9, 02);
+const summerClockStartDate = new Date(2024,2,26)
 //today:
 let today = new Date();
 //word index is the numOfWordale calculated later on
