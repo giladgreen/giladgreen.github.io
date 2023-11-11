@@ -405,11 +405,13 @@
         .send{
             margin-top: 20px;
         }
-        .reset {
+        .resetdiv {
              position: fixed;
               bottom: 0;
               right: 0;
               width: 100%;
+              text-align: center;
+            
         }
         #keyboard {
             display: flexbox;
@@ -496,7 +498,7 @@
             <button class="letter" onclick="clickLetter(this.value)" value="ת" id="ת">ת</button>
         </div>
         <div><button class="send" id="send" value="שליחה" onclick="sendWord()">שליחה</button>
-        <div><button class="reset" id="reset" value="איפוס" onclick="reset()">איפוס</button>
+        <div class="resetdiv"><button class="reset" id="reset" value="איפוס" onclick="reset()">איפוס</button>
         </div>
         <div>
         </div>
