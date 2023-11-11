@@ -418,7 +418,7 @@
          .reset {
              font-size:10px;
                background: white;
-            color: white;
+            color: gray;
         }
         #keyboard {
             display: flexbox;
@@ -508,13 +508,13 @@
             <button class="letter" onclick="clickLetter(this.value)" value="צ" id="צ">צ</button>
             <button class="letter" onclick="clickLetter(this.value)" value="ת" id="ת">ת</button>
         </div>
-         <div>
-            <img src="shudu3.png">
-        </div>
-        <div><button class="send" id="send" value="שליחה" onclick="sendWord()">שליחה</button>
+        
+        <div>
+            <button class="send" id="send" value="שליחה" onclick="sendWord()">שליחה</button>
             
-             <div>  </div>  <div>  </div>
-        <div class="resetdiv"><button class="reset" id="reset" value="איפוס" onclick="reset()">איפוס</button>
+        </div>
+        <div class="resetdiv">
+            <button class="reset" id="reset" value="איפוס" onclick="reset()">.</button>
         </div>
         <div>
         </div>
