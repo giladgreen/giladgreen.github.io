@@ -75,13 +75,10 @@ function changeToFinal(value) {
 }
 
 function reset(){
-endOfGameToday = false;
-    let today = new Date();
-//word index is the numOfWordale calculated later on
-let pickedWord = pickWord();
-console.log('word is',pickedWord)
-//set the timer for next wordale:
-countDownTimer();
+    localStorage.removeItem('userDate', today);
+    localStorage.removeItem('answersColors', answersColors);
+    localStorage.removeItem('answersLetters', answersLetters)
+location.reload();
 
 }
 function sendWord() {
