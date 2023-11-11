@@ -75,9 +75,16 @@ function changeToFinal(value) {
 }
 
 function reset(){
+    pickedWord = pickWord();
     localStorage.removeItem('userDate', today);
     localStorage.removeItem('answersColors', answersColors);
     localStorage.removeItem('answersLetters', answersLetters)
+    localStorage.removeItem('guessDistribution',guessDistribution);
+     localStorage.removeItem('played',played);
+     localStorage.removeItem('wins',wins);
+     localStorage.removeItem('streak',streak);
+     localStorage.removeItem('maxStreak',maxStreak);
+    
 location.reload();
 
 }
