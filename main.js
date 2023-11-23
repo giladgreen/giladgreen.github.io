@@ -371,9 +371,11 @@ function saveUserData() {
 function loadUserData() {
     //because localStorage only saves strings.
      const userNumOfWordale  = localStorage.getItem('numOfWordale');
+console.log('## saved userNumOfWordale',userNumOfWordale);
+            console.log('## numOfWordale',numOfWordale);
 
     //only if day has changed:
-    if (numOfWordale === userNumOfWordale) {
+    if (Number(numOfWordale) === Number(userNumOfWordale)) {
         answersLetters = localStorage.getItem('answersLetters').split(",");
         for (k = 0; k < answersLetters.length; k++) {
             for (m = 0; m < answersLetters[k].length; m++) {
