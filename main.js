@@ -43,7 +43,6 @@ function pickWord() {
     numOfWordale = (differenceInDays * 12) + insideDay;
     numOfWordale = numOfWordale % (listOfWords.length-1);
     var result = listOfWords[numOfWordale];
-    localStorage.setItem('numOfWordale', numOfWordale);
 
 
     return result;
