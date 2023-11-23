@@ -20,7 +20,7 @@ let answersLetters = [];
 //numOfWordale is calculated later by the difference from today to the launch of wordale
 let numOfWordale = 0;
 // the launch date of wordale
-const startDate = new Date(2023, 9, 02);
+const startDate = new Date(2023, 11, 02);
 const summerClockStartDate = new Date(2024,2,26)
 //today:
 let today = new Date();
@@ -35,15 +35,16 @@ let guessDistribution;
 
 
 function pickWord() {
-    //today = new Date();
-    var differenceInTime = today.getTime() - startDate.getTime();
-    //    var differenceInTime = today.getTime() - summerClockStartDate.getTime();
-
-    // To calculate the no. of days between two dates
-    var differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24)); //added 74 since it screwed the 1 hour difference between gmt+3 and gmt+2; 
-    numOfWordale = differenceInDays;
-    //    var differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24)) + 74; //added 74 since it screwed the 1 hour difference between gmt+3 and gmt+2; 
-    return listOfWords[differenceInDays];
+    var now = new Date();
+    now.setHours(0, 0, 0, 0);
+    var todayStartDifferenceInTime = now.getTime() - startDate.getTime();
+    var differenceInDays = Math.floor(todayStartDifferenceInTime / (1000 * 3600 * 24));
+    var currentHour = (new date()).getHours();
+    const insideDay = Math.floor(currentHour / 2);
+    
+    numOfWordale = (differenceInDays * 12) + insideDay;
+    numOfWordale = numOfWordale % listOfWords.length;
+    return listOfWords[numOfWordale];
 }
 
 function clickLetter(value) {
