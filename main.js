@@ -36,10 +36,10 @@ let guessDistribution;
 
 function pickWord() {
     var now = new Date();
+    var currentHour = now.getHours();
     now.setHours(0, 0, 0, 0);
     var todayStartDifferenceInTime = now.getTime() - startDate.getTime();
     var differenceInDays = Math.floor(todayStartDifferenceInTime / (1000 * 3600 * 24));
-    var currentHour = (new Date()).getHours();
     const insideDay = Math.floor(currentHour / 2);
     
     numOfWordale = (differenceInDays * 12) + insideDay;
