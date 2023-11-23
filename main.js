@@ -44,6 +44,7 @@ function pickWord() {
    console.log('## todayStartDifferenceInTime:', todayStartDifferenceInTime)
 
     var differenceInDays = Math.floor(todayStartDifferenceInTime / (1000 * 3600 * 24));
+   differenceInDays = differenceInDays > 0 ? differenceInDays : -1 * differenceInDays;
    console.log('## differenceInDays:', differenceInDays)
 
     const insideDay = Math.floor(currentHour / 2);
