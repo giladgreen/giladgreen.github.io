@@ -397,18 +397,20 @@ function compareLetters(letterA, letterB) {
     }
 }
 function countDownTimer() {
-     console.log('## countDownTimer start');
+   
     var now = new Date();
     var currentHour = now.getHours();
-    console.log('## currentHour',currentHour);
+ 
     var nextHour = currentHour % 2 === 0 ? currentHour + 2 : currentHour +1;
    
-    console.log('## nextHour',nextHour);
-
     var todaysDate = new Date();
-    
-    todaysDate.setDate(todaysDate.getDate() + 1);
-    todaysDate.setHours(0, 0, 0, 0);
+    if (nextHour === 24){
+          todaysDate.setDate(todaysDate.getDate() + 1);
+          todaysDate.setHours(0, 0, 0, 0);
+    } else {
+          todaysDate.setHours(nextHour, 0, 0, 0);
+    }
+  
     var countDownDate = todaysDate.getTime();
 
     // Update the count down every 1 second
