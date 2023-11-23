@@ -159,13 +159,6 @@ function openNotificationLong(message, bool) {
     document.getElementById('notify').innerHTML = message;
 }
 
-function openShareNotificationLong() {
-    document.getElementById('notify2').style.height = "5%";
-
-    document.getElementById('shareButton').style.visibility = "visible";
-}
-
-
 function eraseWord() {
     currentWord = '';
     if (wordCount <= rowCount) {
@@ -278,7 +271,7 @@ function compareWords() {
         endOfGameToday = true;
         let winMessage = pickMessage();
         openNotificationLong(winMessage, true);
-        openShareNotificationLong();
+     
 
 
     }
