@@ -308,7 +308,7 @@ function shareResults() {
         shareResult = shareResult + result + "\n";
 
     }
-    shareResult = shareResult + "\n" + "וורדל בעברית:" + "\n" + "https://yairhasfari.github.io/wordale";
+    shareResult = shareResult + "\n" + "וורדל בעברית:" + "\n" + "https://giladgreen.github.io/wordale";
     navigator.clipboard.writeText(shareResult);
     // let shareButton = "<input id=\"shareButton\" onclick=\"shareResults()\" value=\"תוצאות הועתקו ללוח\">"
     // document.getElementById('notify2').innerHTML = shareButton;
@@ -350,7 +350,7 @@ function shareResults() {
         shareResult = shareResult + result + "\n";
 
     }
-    shareResult = shareResult + "\n" + "שוּדוּוֹרְדֵּל בעברית:" + "\n" + "https://yairhasfari.github.io/wordale";
+    shareResult = shareResult + "\n" + "שוּדוּוֹרְדֵּל בעברית:" + "\n" + "https://giladgreen.github.io/wordale";
     navigator.clipboard.writeText(shareResult);
     // let shareButton = "<input id=\"shareButton\" onclick=\"shareResults()\" value=\"תוצאות הועתקו ללוח\">"
     // document.getElementById('notify2').innerHTML = shareButton;
