@@ -35,16 +35,28 @@ let guessDistribution;
 
 
 function pickWord() {
+   console.log('## pickWord start')
     var now = new Date();
     var currentHour = now.getHours();
     now.setHours(0, 0, 0, 0);
+   console.log('## currentHour:', currentHour)
     var todayStartDifferenceInTime = now.getTime() - startDate.getTime();
+   console.log('## todayStartDifferenceInTime:', todayStartDifferenceInTime)
+
     var differenceInDays = Math.floor(todayStartDifferenceInTime / (1000 * 3600 * 24));
+   console.log('## differenceInDays:', differenceInDays)
+
     const insideDay = Math.floor(currentHour / 2);
-    
+   console.log('## insideDay:', insideDay)
+   console.log('## listOfWords.length',listOfWords.length)
+
     numOfWordale = (differenceInDays * 12) + insideDay;
-    numOfWordale = numOfWordale % listOfWords.length;
-    return listOfWords[numOfWordale];
+   console.log('## numOfWordale:', numOfWordale, ' => ', numOfWordale % (listOfWords.length-1))
+
+    numOfWordale = numOfWordale % (listOfWords.length-1);
+    var result = listOfWords[numOfWordale];
+   console.log('## result:', result)
+    return result;
 }
 
 function clickLetter(value) {
