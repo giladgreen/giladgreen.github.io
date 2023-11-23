@@ -128,6 +128,11 @@ function sendWord() {
 
     }
 }
+function openShareNotificationLong() {
+    document.getElementById('notify2').style.height = "5%";
+
+    document.getElementById('shareButton').style.visibility = "visible";
+}
 function animateWakeUp() {
     for (i = 1; i <= 5; i++) {
         setAnimation(i, 'wakeup');
@@ -271,7 +276,7 @@ function compareWords() {
         endOfGameToday = true;
         let winMessage = pickMessage();
         openNotificationLong(winMessage, true);
-     
+        openShareNotificationLong();
 
 
     }
@@ -307,6 +312,24 @@ function pickMessage() {
 
     return messageArray[randIndex]
 }
+function shareResults() {
+    let shareResult = `וורדל\'ה # ${numOfWordale}` + "\n";
+    shareResult += `נסיון ${wordCount} מתוך 6` + "\n";
+
+    for (i = 0; i < answersColors.length; i++) {
+        let tempAnswer = answersColors[i].toString();
+        const result = tempAnswer.replaceAll(",", "");
+        shareResult = shareResult + result + "\n";
+
+    }
+    shareResult = shareResult + "\n" + "וורדל בעברית:" + "\n" + "https://yairhasfari.github.io/wordale";
+    navigator.clipboard.writeText(shareResult);
+    // let shareButton = "<input id=\"shareButton\" onclick=\"shareResults()\" value=\"תוצאות הועתקו ללוח\">"
+    // document.getElementById('notify2').innerHTML = shareButton;
+    document.getElementById("shareButton").innerHTML = "תוצאות הועתקו ללוח";
+
+}
+
 function checkSpell(word) {
     let wordExists = false;
     splitWordsHebrew = hebWords.split(' ');
