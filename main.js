@@ -397,10 +397,12 @@ function compareLetters(letterA, letterB) {
     }
 }
 function countDownTimer() {
+     console.log('## countDownTimer start');
     var now = new Date();
     var currentHour = now.getHours();
-    var nextHour = currentHour % 2 === 0 ? currentHour + 2 : currentHour +1;
     console.log('## currentHour',currentHour);
+    var nextHour = currentHour % 2 === 0 ? currentHour + 2 : currentHour +1;
+   
     console.log('## nextHour',nextHour);
 
     var todaysDate = new Date();
