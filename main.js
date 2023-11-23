@@ -43,6 +43,9 @@ function pickWord() {
     numOfWordale = (differenceInDays * 12) + insideDay;
     numOfWordale = numOfWordale % (listOfWords.length-1);
     var result = listOfWords[numOfWordale];
+    localStorage.setItem('numOfWordale', numOfWordale);
+
+
     return result;
 }
 
@@ -74,20 +77,7 @@ function changeToFinal(value) {
     return value;
 }
 
-function reset(){
-    pickedWord = pickWord();
-    localStorage.removeItem('userDate', today);
-    localStorage.removeItem('answersColors', answersColors);
-    localStorage.removeItem('answersLetters', answersLetters)
-    localStorage.removeItem('guessDistribution',guessDistribution);
-     localStorage.removeItem('played',played);
-     localStorage.removeItem('wins',wins);
-     localStorage.removeItem('streak',streak);
-     localStorage.removeItem('maxStreak',maxStreak);
-    
-location.reload();
 
-}
 function sendWord() {
 
     if (win === false) {
@@ -370,6 +360,8 @@ function saveUserData() {
     //updateStatistics();
     //saves the date the user is currently on
     localStorage.setItem('userDate', today);
+    localStorage.setItem('numOfWordale', numOfWordale);
+
     //saves the answers arrays of today
     localStorage.setItem('answersColors', answersColors);
     localStorage.setItem('answersLetters', answersLetters)
@@ -378,12 +370,10 @@ function saveUserData() {
 // loadUserData loads the data saved on localStorage and fills the tiles with older answers. this only happens if the day is today.
 function loadUserData() {
     //because localStorage only saves strings.
-    let savedDateString = localStorage.getItem('userDate');
-    let savedDate = new Date(savedDateString);
-    let todayNoHours = today.setHours(0, 0, 0, 0);//in order to compare date only without time
-    let savedDateCompare = savedDate.setHours(0, 0, 0, 0)//likewise
+     const userNumOfWordale  = localStorage.getItem('numOfWordale');
+
     //only if day has changed:
-    if (todayNoHours === savedDateCompare) {
+    if (numOfWordale === userNumOfWordale) {
         answersLetters = localStorage.getItem('answersLetters').split(",");
         for (k = 0; k < answersLetters.length; k++) {
             for (m = 0; m < answersLetters[k].length; m++) {
@@ -461,22 +451,7 @@ function countDownTimer() {
     }, 1000);
 }
 function updateStatistics() {
-    // //get older statistics:
-    // if (endOfGameToday === true) {
-    //     let storagePlayed = localStorage.getItem('played')
-    //     if (storagePlayed !== null) {
-    //         newPlayed = JSON.parse(storagePlayed)+1;
-    //     }
-    //     else newPlayed=1;
-    //     localStorage.setItem('played',newPlayed);
-    // }
-    // /*
-    // localStorage.setItem('guessDistribution',guessDistribution);
-    // localStorage.setItem('played',played);
-    // localStorage.setItem('wins',wins);
-    // localStorage.setItem('streak',streak);
-    // localStorage.setItem('maxStreak',maxStreak);
-    // */
+
 
 }
 loadUserData();
