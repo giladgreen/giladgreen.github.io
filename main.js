@@ -20,13 +20,13 @@ let answersLetters = [];
 //numOfWordale is calculated later by the difference from today to the launch of wordale
 let numOfWordale = 0;
 // the launch date of wordale
-const startDate = new Date(2023, 11, 02);
+const startDate = new Date(2023, 10, 2);
 const summerClockStartDate = new Date(2024,2,26)
 //today:
 let today = new Date();
 //word index is the numOfWordale calculated later on
 let pickedWord = pickWord();
-console.log('word is',pickedWord)
+
 //set the timer for next wordale:
 countDownTimer();
 
@@ -40,11 +40,16 @@ function pickWord() {
     var differenceInDays = Math.floor(todayStartDifferenceInTime / (1000 * 3600 * 24));
     differenceInDays = differenceInDays > 0 ? differenceInDays : -1 * differenceInDays;
     const insideDay = Math.floor(currentHour / 2);
+    console.log('now is',now)
+    console.log('startDate is',startDate)
+    console.log('differenceInDays is',differenceInDays)
+    console.log('insideDay is',insideDay)
     numOfWordale = (differenceInDays * 12) + insideDay;
     numOfWordale = numOfWordale % (listOfWords.length-1);
     var result = listOfWords[numOfWordale];
 
-
+    console.log('word is',result)
+    console.log('numOfWordale is',numOfWordale)
     return result;
 }
 
@@ -111,14 +116,14 @@ function openShareNotificationLong() {
 function animateWakeUp() {
     for (i = 1; i <= 5; i++) {
         setAnimation(i, 'wakeup');
-        function setAnimation(k, animation) { 
-            document.getElementById(`tile${rowCount}${i}`).classList.add(animation) 
+        function setAnimation(k, animation) {
+            document.getElementById(`tile${rowCount}${i}`).classList.add(animation)
         };
     }
     setTimeout(function () {
         for (j = 1; j <= 5; j++) {
                 document.getElementById(`tile${rowCount}${j}`).setAttribute('data-animation','idle');
-                document.getElementById(`tile${rowCount}${j}`).classList.remove('wakeup');}        
+                document.getElementById(`tile${rowCount}${j}`).classList.remove('wakeup');}
     }, 800);
 }
 function openNotification(message) {
@@ -161,7 +166,7 @@ function eraseLetter() {
 
     }
     //     setInterval(removeAnimation('wakeup'),5000);
-    //     function removeAnimation(animation){ 
+    //     function removeAnimation(animation){
     //         for (i=1;i<=5;i++){
     //             document.getElementById(`tile${rowCount}${i}`).setAttribute('data-animation','idle');
     //             document.getElementById(`tile${rowCount}${i}`).classList.remove(animation);
@@ -404,12 +409,12 @@ function compareLetters(letterA, letterB) {
     }
 }
 function countDownTimer() {
-   
+
     var now = new Date();
     var currentHour = now.getHours();
- 
+
     var nextHour = currentHour % 2 === 0 ? currentHour + 2 : currentHour +1;
-   
+
     var todaysDate = new Date();
     if (nextHour === 24){
           todaysDate.setDate(todaysDate.getDate() + 1);
@@ -417,15 +422,15 @@ function countDownTimer() {
     } else {
           todaysDate.setHours(nextHour, 0, 0, 0);
     }
-  
+
     var countDownDate = todaysDate.getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function () {
-        
+
         // Get today's date and time
         var now = new Date().getTime();
-        
+
         // Find the distance between now and the count down date
         var distance = countDownDate - now;
 
@@ -443,11 +448,11 @@ function countDownTimer() {
             + minutes + ":" + seconds;
         if (hours==0 & minutes==0 & seconds==0) {location.reload();};
 
-        // If the count down is over, write some text 
+        // If the count down is over, write some text
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("timer").innerHTML = "";
-            
+
         }
     }, 1000);
 }
