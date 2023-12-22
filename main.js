@@ -40,16 +40,20 @@ function pickWord() {
     var differenceInDays = Math.floor(todayStartDifferenceInTime / (1000 * 3600 * 24));
     differenceInDays = differenceInDays > 0 ? differenceInDays : -1 * differenceInDays;
     const insideDay = Math.floor(currentHour / 2);
-    console.log('now is',now)
-    console.log('startDate is',startDate)
-    console.log('differenceInDays is',differenceInDays)
-    console.log('insideDay is',insideDay)
-    numOfWordale = (differenceInDays * 12) + insideDay;
-    numOfWordale = numOfWordale % (listOfWords.length-1);
-    var result = listOfWords[numOfWordale];
+    // console.log('## now is',now)
+    // console.log('## startDate is',startDate)
+    // console.log('## differenceInDays is',differenceInDays)
+    // console.log('## insideDay is',insideDay)
+    numOfWordale = (((differenceInDays * 12) + insideDay) * 8364521) + 12;
+    var allWords = hebWords.split(' ');
+    console.log('## allWords.length is',allWords.length)
+    numOfWordale = numOfWordale % (allWords.length-1);
+    console.log('##  numOfWordale is',numOfWordale)
+    var result = allWords[numOfWordale];
 
-    console.log('word is',result)
-    console.log('numOfWordale is',numOfWordale)
+
+    console.log('## word is',result)
+
     return result;
 }
 
@@ -84,6 +88,10 @@ function changeToFinal(value) {
 
 function sendWord() {
 
+    console.log('## current guess:', currentWord)
+    if (currentWord === 'בזילק'){
+        alert('the answer is:'+pickedWord )
+    }
     if (win === false) {
         let x = checkSpell(currentWord);
         if (currentWord.length === 5) {
@@ -293,7 +301,7 @@ function pickMessage() {
     return messageArray[randIndex]
 }
 function shareResults() {
-    let shareResult = `וורדל\'ה # ${numOfWordale}` + "\n";
+    let shareResult = `שודוורדל # ${numOfWordale}` + "\n";
     shareResult += `נסיון ${wordCount} מתוך 6` + "\n";
 
     for (i = 0; i < answersColors.length; i++) {
