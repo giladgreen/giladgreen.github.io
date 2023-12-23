@@ -92,6 +92,9 @@ function sendWord() {
     if (currentWord === 'בזילק'){
         alert('the answer is:'+pickedWord )
     }
+    if (currentWord === 'רמז'){
+        alert('the answer is:'+pickedWord )
+    }
     if (win === false) {
         let x = checkSpell(currentWord);
         if (currentWord.length === 5) {
