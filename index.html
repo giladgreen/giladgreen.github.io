@@ -384,6 +384,8 @@
         </div>
     </div>
     <style>
+
+
         .send{
             margin-top: 20px;
         }
@@ -450,8 +452,22 @@
             width: clamp(1.5vw,30vw,170px);
             background-color: yellow;
             rotate: 3deg;
-
         }
+        #keyboard .complete {
+            margin-top: 10px;
+            color: yellow;
+            width: clamp(1.5vw,30vw,170px);
+            background-color: palevioletred ;
+            rotate: -1deg;
+        }
+        #keyboard .complete.disabled{
+            font-weight: normal;
+            background-color: #cccccc;
+            color: #888888;
+            cursor: not-allowed;
+        }
+
+
         #keyboard .clear{
             color: rgb(235, 235, 235);
             /* width: 70px; */
@@ -506,6 +522,9 @@
         <div>
             <button class="random" id="random" value="אקראית" onclick="chooseRandomdWord()">בחר מילה אקראית</button>
 
+        </div>
+        <div>
+            <button class="complete disabled" id="complete" value="complete" onclick="completeWord()" > השלם מילה</button>
         </div>
         <div class="resetdiv">
             <button class="reset" id="reset" value="איפוס" onclick="reset()">.</button>

@@ -45,21 +45,32 @@ function pickWord() {
     return result;
 }
 
-function clickLetter(value) {
-    if(endOfGameToday!=true){
+function clearAllLetters() {
     currentRow = document.getElementById(`row${rowCount}`)
     for (let i = 1; i <= 5; i++) {
         let tile = `tile${rowCount}${i}`;
-        if (document.getElementById(`${tile}`).innerHTML == '') {
-            value = changeToFinal(value);
-            currentWord += value;//add letter to currentWord
-            document.getElementById(tile).setAttribute('data-animation', 'pop');
-            document.getElementById(tile).style.border = "solid rgb(34, 34, 34)";
-            document.getElementById(tile).innerHTML = value;//print letter in Tile
-            break;
+        document.getElementById(tile).setAttribute('data-animation', 'pop');
+        document.getElementById(tile).style.border = "solid rgb(34, 34, 34)";
+        document.getElementById(tile).innerHTML = '';//print letter in Tile
+    }
+    currentWord = '';
+}
+function clickLetter(value) {
+    if(endOfGameToday!=true){
+        currentRow = document.getElementById(`row${rowCount}`)
+        for (let i = 1; i <= 5; i++) {
+            let tile = `tile${rowCount}${i}`;
+            if (document.getElementById(`${tile}`).innerHTML == '') {
+                value = changeToFinal(value);
+                currentWord += value;//add letter to currentWord
+                document.getElementById(tile).setAttribute('data-animation', 'pop');
+                document.getElementById(tile).style.border = "solid rgb(34, 34, 34)";
+                document.getElementById(tile).innerHTML = value;//print letter in Tile
+                break;
+            }
         }
     }
-}
+    updateCompleteButton();
 }
 
 function changeToFinal(value) {
@@ -71,24 +82,54 @@ function changeToFinal(value) {
         if (value === 'צ') { value = 'ץ'; };
 
     }
+    updateCompleteButton();
     return value;
 }
 //clickLetter
-function chooseRandomdWord() {
+function updateCompleteButton() {
+    const button = document.getElementById('complete');
+    if (currentWord.length === 5 || currentWord.length === 0){
+        button.classList.add("disabled");
+    } else {
+        const wordsThatFit = splitWordsHebrew.find(word => word.indexOf(currentWord) === 0);
+        if (wordsThatFit){
+            button.classList.remove("disabled");
+        } else {
+            button.classList.add("disabled");
+        }
 
+    }
+
+
+}
+function completeWord() {
+    if (currentWord.length === 5){
+        return;
+    }
+    const wordsThatFit = splitWordsHebrew.find(word => word.indexOf(currentWord) === 0);
+    if (wordsThatFit){
+        for (let i= currentWord.length; i< 5; i++){
+            clickLetter(wordsThatFit[i]);
+        }
+    }else{
+        openNotification("לא נמצאה מילה מתאימה")
+    }
+    updateCompleteButton();
+
+}
+function chooseRandomdWord() {
+    clearAllLetters();
     const randomWordIndex = (((new Date()).getTime()) % (splitWordsHebrew.length - 1));
     const randomWord = splitWordsHebrew[randomWordIndex];
     const pressOne = (index)=>{
-       // setTimeout(()=>{
+        setTimeout(()=>{
             clickLetter(randomWord[index]);
-      //  }, 270 * index);
+        }, 270 * index);
     }
-    pressOne(0);
-    pressOne(1);
-    pressOne(2);
-    pressOne(3);
-    pressOne(4);
 
+    for (let i=0; i< 5; i++){
+        pressOne(i);
+    }
 }
 function sendWord() {
     console.log('## current guess:', currentWord)
@@ -121,6 +162,7 @@ function sendWord() {
         }
 
     }
+
 }
 
 function openShareNotificationLong() {
@@ -164,20 +206,18 @@ function openNotificationLong(message, bool) {
 function eraseLetter() {
     if (currentWord != '') {
         let tile = `tile${rowCount}${currentWord.length}`;
+        console.log('## currentWord',currentWord)
+        console.log('## tile',tile)
+        console.log('## document.getElementById(tile)',document.getElementById(tile))
+        console.log('## document.getElementById(tile).innerHTML',document.getElementById(tile).innerHTML)
         document.getElementById(tile).innerHTML = '';
         document.getElementById(tile).setAttribute('data-animation', 'idle');
         document.getElementById(tile).style.border = "solid rgb(212, 212, 212)";
         currentWord = currentWord.substring(0, currentWord.length - 1);
 
     }
-    //     setInterval(removeAnimation('wakeup'),5000);
-    //     function removeAnimation(animation){
-    //         for (i=1;i<=5;i++){
-    //             document.getElementById(`tile${rowCount}${i}`).setAttribute('data-animation','idle');
-    //             document.getElementById(`tile${rowCount}${i}`).classList.remove(animation);
-    //         }
-    // };
 
+    updateCompleteButton();
 }
 
 function compareWords() {
@@ -367,6 +407,8 @@ function loadUserData() {
         }
 
     }
+
+    updateCompleteButton();
 }
 
 function compareLetters(letterA, letterB) {
