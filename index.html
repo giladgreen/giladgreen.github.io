@@ -444,6 +444,14 @@
             width: clamp(1.5vw,25vw,100px);
             background-color: rgb(110, 110, 110);
         }
+        #keyboard .random {
+            margin-top: 10px;
+            color: palevioletred;
+            width: clamp(1.5vw,30vw,170px);
+            background-color: palegreen;
+            rotate: 3deg;
+
+        }
         #keyboard .clear{
             color: rgb(235, 235, 235);
             /* width: 70px; */
@@ -493,6 +501,10 @@
 
         <div>
             <button class="send" id="send" value="שליחה" onclick="sendWord()">שליחה</button>
+
+        </div>
+        <div>
+            <button class="random" id="random" value="אקראית" onclick="chooseRandomdWord()">בחר מילה אקראית</button>
 
         </div>
         <div class="resetdiv">

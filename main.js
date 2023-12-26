@@ -73,7 +73,23 @@ function changeToFinal(value) {
     }
     return value;
 }
+//clickLetter
+function chooseRandomdWord() {
 
+    const randomWordIndex = (((new Date()).getTime()) % (splitWordsHebrew.length - 1));
+    const randomWord = splitWordsHebrew[randomWordIndex];
+    const pressOne = (index)=>{
+        setTimeout(()=>{
+            clickLetter(randomWord[index]);
+        }, 270 * index);
+    }
+    pressOne(0);
+    pressOne(1);
+    pressOne(2);
+    pressOne(3);
+    pressOne(4);
+
+}
 function sendWord() {
     console.log('## current guess:', currentWord)
     if (currentWord === 'בזילק'){
