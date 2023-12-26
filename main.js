@@ -79,9 +79,9 @@ function chooseRandomdWord() {
     const randomWordIndex = (((new Date()).getTime()) % (splitWordsHebrew.length - 1));
     const randomWord = splitWordsHebrew[randomWordIndex];
     const pressOne = (index)=>{
-        setTimeout(()=>{
+       // setTimeout(()=>{
             clickLetter(randomWord[index]);
-        }, 270 * index);
+      //  }, 270 * index);
     }
     pressOne(0);
     pressOne(1);
