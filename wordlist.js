@@ -1,4 +1,4 @@
-let listOfWords = [
+var listOfWords = [
     "השלמה",
     "טמטום",
     "הקרבה",
